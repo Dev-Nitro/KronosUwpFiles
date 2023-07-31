@@ -1,5 +1,3 @@
--- Credit to Nori Miyazaki and ImmuneLion318 for the Script
-
-getgenv().setclipboard = newcclosure(function(informative)
-    writefile("setclipboard.reader", informative)
-end)
+getgenv().setclipboard = function(clipboardtxt)
+    writefile("setclipboard.reader", tostring(clipboardtxt))
+end
