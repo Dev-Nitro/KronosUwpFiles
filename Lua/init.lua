@@ -1,3 +1,32 @@
+getgenv().getscriptclosure = function(obj, methodName)
+    local method = obj[methodName]
+    if type(method) == "function" then
+        return method
+    else
+        error("Method '" .. methodName .. "' not found or not a valid function.")
+    end
+end
+
+getgenv().getcallbackvalue = function(callback, argument)
+    if type(callback) == "function" then
+        return callback(argument)
+    else
+        error("Invalid callback function.")
+    end
+end
+
+getgenv().setscriptable = function(obj, methodName, func)
+    if type(obj) ~= "table" then
+        error("Invalid object provided.")
+    elseif type(methodName) ~= "string" or methodName == "" then
+        error("Invalid method name provided.")
+    elseif type(func) ~= "function" then
+        error("Invalid function provided.")
+    end
+
+    obj[methodName] = func
+end
+
 getgenv().setclipboard = function(clipboardtxt)
     writefile("setclipboard.reader", tostring(clipboardtxt))
 end
