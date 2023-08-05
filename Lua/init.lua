@@ -1,30 +1,41 @@
 getgenv().getscriptclosure = function(obj, methodName)
     local method = obj[methodName]
     if type(method) == "function" then
-        return method
+        return function(...)
+            local args = {...}
+            return method(unpack(args))
+        end
     else
         error("Method '" .. methodName .. "' not found or not a valid function.")
     end
 end
 
-getgenv().getcallbackvalue = function(callback, argument)
+getgenv().getCallbackValue = function(callbackObj, callbackName)
+    if not callbackObj or type(callbackName) ~= "string" then
+        error("Invalid callback object or name provided.")
+    end
+
+    local callback = callbackObj[callbackName]
     if type(callback) == "function" then
-        return callback(argument)
+        return callback
     else
         error("Invalid callback function.")
     end
 end
 
-getgenv().setscriptable = function(obj, methodName, func)
-    if type(obj) ~= "table" then
-        error("Invalid object provided.")
-    elseif type(methodName) ~= "string" or methodName == "" then
-        error("Invalid method name provided.")
-    elseif type(func) ~= "function" then
-        error("Invalid function provided.")
+getgenv().setScriptable = function(obj, propertyName, isScriptable)
+    if type(obj) ~= "userdata" or not obj:IsA("Instance") then
+        error("Invalid object provided. Expected userdata (Instance).")
+    elseif type(propertyName) ~= "string" or propertyName == "" then
+        error("Invalid property name provided.")
+    elseif type(isScriptable) ~= "boolean" then
+        error("Invalid isScriptable flag provided. Expected a boolean.")
     end
 
-    obj[methodName] = func
+    local wasScriptable = obj:GetAttribute("scriptable_" .. propertyName)
+    obj:SetAttribute("scriptable_" .. propertyName, isScriptable)
+
+    return wasScriptable
 end
 
 getgenv().setclipboard = function(clipboardtxt)
