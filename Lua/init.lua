@@ -10,7 +10,7 @@ getgenv().getscriptclosure = function(obj, methodName)
     end
 end
 
-getgenv().getCallbackValue = function(callbackObj, callbackName)
+getgenv().getcallbackvalue = function(callbackObj, callbackName)
     if not callbackObj or type(callbackName) ~= "string" then
         error("Invalid callback object or name provided.")
     end
@@ -23,7 +23,7 @@ getgenv().getCallbackValue = function(callbackObj, callbackName)
     end
 end
 
-getgenv().setScriptable = function(obj, propertyName, isScriptable)
+getgenv().setscriptable = function(obj, propertyName, isScriptable)
     if type(obj) ~= "userdata" or not obj:IsA("Instance") then
         error("Invalid object provided. Expected userdata (Instance).")
     elseif type(propertyName) ~= "string" or propertyName == "" then
@@ -32,8 +32,8 @@ getgenv().setScriptable = function(obj, propertyName, isScriptable)
         error("Invalid isScriptable flag provided. Expected a boolean.")
     end
 
-    local wasScriptable = obj:GetAttribute("scriptable_" .. propertyName)
-    obj:SetAttribute("scriptable_" .. propertyName, isScriptable)
+    local wasScriptable = isscriptable(obj, propertyName)
+    obj:SetAttribute(propertyName, isScriptable)
 
     return wasScriptable
 end
