@@ -3,7 +3,7 @@ getgenv().setclipboard = function(clipboardtxt)
 end
 
 getgenv().identifyexecutor = function()
-    return "Kronos UWP"
+    return "Evon UWP"
 end
 
 --Compatibility
