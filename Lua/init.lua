@@ -6,6 +6,10 @@ getgenv().identifyexecutor = function()
     return "Kronos UWP"
 end
 
+getgenv().getexecutorname = function()
+    return "Kronos UWP"
+end
+
 --Compatibility
 
 --SynapseX
