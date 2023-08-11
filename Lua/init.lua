@@ -38,12 +38,5 @@ getgenv().syn_getnilinstances = getnilinstances
 getgenv().syn_fireclickdetector = fireclickdetector
 getgenv().syn_getgc = getgc
 
---ProtoSmasher
-getgenv().make_writeable = function(t) setreadonly(t, false) end
-getgenv().make_readonly = function(t) setreadonly(t, true) end
-getgenv().is_readonly = isreadonly
-getgenv().is_writeable = function(t) return not isreadonly(t) end
-getgenv().get_nil_instances = getnilinstances
-getgenv().click_detector = fireclickdetector
-getgenv().is_c_closure = iscclosure
-getgenv().is_l_closure = islclosure
+getgenv().getscriptclosure=function(a1)for _,t in pairs(getreg())do if type(t)=="table"then for _,v in pairs(t)do if type(v)=="function"and getfenv(v)and rawget(getfenv(v),"script")==a1 then return v end end end end end
+
