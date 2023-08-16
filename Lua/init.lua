@@ -3,11 +3,11 @@ getgenv().setclipboard = function(clipboardtxt)
 end
 
 getgenv().identifyexecutor = function()
-    return "Kronos UWP"
+    return "KAPI UWP"
 end
 
 getgenv().getexecutorname = function()
-    return "Kronos UWP"
+    return "KAPI UWP"
 end
 
 getgenv().getscriptclosure = function(targetScript)
