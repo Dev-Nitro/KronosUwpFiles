@@ -202,6 +202,13 @@ getgenv().saveinstance = function(saving)
     print("Credit To HTDBarsi & Nori")
 end
 
+game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = "Injection Success",
+			Text = string.format("Thanks for using KAPI\nJoin Our Discord: https://discord.gg/bwYwNrKpwJ", game["Players"]["LocalPlayer"]["DisplayName"]),
+			Duration = 5
+		})
+setclipboard("https://discord.gg/bwYwNrKpwJ")
+
 --Compatibility
 
 --SynapseX
