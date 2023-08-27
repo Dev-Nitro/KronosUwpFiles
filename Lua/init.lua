@@ -205,7 +205,7 @@ end
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 OrionLib:MakeNotification({
 	Name = "Injection Success",
-	Content = "Thanks for using KAPI\nJoin Our Discord: discord.gg/bwYwNrKpwJ\ndiscord.gg/orbituniverse",
+	Content = "Thanks for using KAPI\n\nJoin Our Discords: discord.gg/bwYwNrKpwJ\ndiscord.gg/orbituniverse",
 	Image = "rbxassetid://4483362748",
 	Time = 5
 })
