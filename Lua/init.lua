@@ -202,12 +202,15 @@ getgenv().getscriptclosure = function(targetScript)
     end
 end
 
-game:GetService("StarterGui"):SetCore("SendNotification", {
-			Title = "Injection Success",
-			Text = string.format("Thanks for using KAPI\nJoin Our Discord: https://discord.gg/bwYwNrKpwJ", game["Players"]["LocalPlayer"]["DisplayName"]),
-			Duration = 5
-		})
-setclipboard("https://discord.gg/bwYwNrKpwJ")
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+OrionLib:MakeNotification({
+	Name = "Injection Success",
+	Content = "Thanks for using KAPI\nJoin Our Discord: https://discord.gg/bwYwNrKpwJ",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+--setclipboard("https://discord.gg/bwYwNrKpwJ")
 
 --Compatibility
 
