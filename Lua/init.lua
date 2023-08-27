@@ -2,14 +2,6 @@ getgenv().setclipboard = newcclosure(function(clipboardtxt))
     writefile("setclipboard.reader", tostring(clipboardtxt))
 end
 
-getgenv().identifyexecutor = function()
-    return "KAPI UWP"
-end
-
-getgenv().getexecutorname = function()
-    return "KAPI UWP"
-end
-
 getgenv().getscriptclosure = function(targetScript)
     for _, regEntry in pairs(getreg()) do
         if type(regEntry) == "table" then
@@ -200,6 +192,14 @@ getgenv().saveinstance = function(saving)
     writefile(("game_%s.rbxlx"):format(game.PlaceId),table.concat(temp," ").."</roblox>")
     print(("Done! Took %ss"):format(math.round((tick()-timer)*100)/100)) 
     print("Credit To HTDBarsi & Nori")
+end
+
+getgenv().identifyexecutor = function()
+    return "KAPI UWP"
+end
+
+getgenv().getexecutorname = function()
+    return "KAPI UWP"
 end
 
 game:GetService("StarterGui"):SetCore("SendNotification", {
