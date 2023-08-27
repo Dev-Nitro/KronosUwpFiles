@@ -1,4 +1,4 @@
-getgenv().setclipboard = function(clipboardtxt)
+getgenv().setclipboard = newcclosure(function(clipboardtxt))
     writefile("setclipboard.reader", tostring(clipboardtxt))
 end
 
