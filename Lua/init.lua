@@ -190,18 +190,6 @@ getgenv().getexecutorname = function()
     return "KAPI UWP"
 end
 
-getgenv().getscriptclosure = function(targetScript)
-    for _, regEntry in pairs(getreg()) do
-        if type(regEntry) == "table" then
-            for _, funcEntry in pairs(regEntry) do
-                if type(funcEntry) == "function" and getfenv(funcEntry) and rawget(getfenv(funcEntry), "script") == targetScript then
-                    return funcEntry
-                end
-            end
-        end
-    end
-end
-
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 OrionLib:MakeNotification({
 	Name = "Injection Success",
