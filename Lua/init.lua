@@ -2,6 +2,20 @@ getgenv().setclipboard = function(clipboardtxt)
     writefile("setclipboard.reader", tostring(clipboardtxt))
 end
 
+getgenv().setscriptable function(object, property, value)
+    if object and object:IsA("Instance") and typeof(property) == "string" and typeof(value) == "boolean" then
+        local originalValue = object[property]
+
+        if originalValue ~= nil then
+            object:SetAttribute(property, value)
+            return originalValue
+        end
+    end
+
+    warn("Invalid arguments for setScriptable function.")
+    return false
+end
+
 getgenv().saveinstance = function(saving)
     if not saving then saving = {workspace,game.Lighting,game.ReplicatedFirst,game.ReplicatedStorage,game.StarterGui,game.StarterPack,game.Teams} end 
     getgenv().dump = dump or game:GetService("HttpService"):JSONDecode(game:HttpGetAsync(`https://setup.rbxcdn.com/{game:HttpGetAsync("https://setup.rbxcdn.com/versionQTStudio")}-API-Dump.json`))
