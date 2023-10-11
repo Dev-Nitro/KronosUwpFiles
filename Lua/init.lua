@@ -2,7 +2,7 @@ getgenv().setclipboard = function(clipboardtxt)
     writefile("setclipboard.reader", tostring(clipboardtxt))
 end
 
-getgenv().setscriptable function(object, property, value)
+getgenv().setscriptable = function(object, property, value)
     if object and object:IsA("Instance") and typeof(property) == "string" and typeof(value) == "boolean" then
         local originalValue = object[property]
 
