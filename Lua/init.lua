@@ -2,6 +2,18 @@ getgenv().setclipboard = function(clipboardtxt)
     writefile("setclipboard.reader", tostring(clipboardtxt))
 end
 
+getgenv().getscriptclosure = function(targetScript)
+    for _, regEntry in pairs(getreg()) do
+        if type(regEntry) == "table" then
+            for _, funcEntry in pairs(regEntry) do
+                if type(funcEntry) == "function" and getfenv(funcEntry) and rawget(getfenv(funcEntry), "script") == targetScript then
+                    return funcEntry
+                end
+            end
+        end
+    end
+end
+
 getgenv().saveinstance = function(saving)
     if not saving then saving = {workspace,game.Lighting,game.ReplicatedFirst,game.ReplicatedStorage,game.StarterGui,game.StarterPack,game.Teams} end 
     getgenv().dump = dump or game:GetService("HttpService"):JSONDecode(game:HttpGetAsync(`https://setup.rbxcdn.com/{game:HttpGetAsync("https://setup.rbxcdn.com/versionQTStudio")}-API-Dump.json`))
@@ -193,7 +205,7 @@ end
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 OrionLib:MakeNotification({
 	Name = "Injection Success",
-	Content = "Thanks for using KAPI\n\nJoin Our Discords: discord.gg/bwYwNrKpwJ\ndiscord.gg/orbituniverse",
+	Content = "Thanks for using KAPI\n\nJoin Our Discord: discord.gg/bwYwNrKpwJ",
 	Image = "rbxassetid://4483362748",
 	Time = 5
 })
